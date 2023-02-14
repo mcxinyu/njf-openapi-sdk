@@ -13,7 +13,8 @@ version = "unspecified"
 
 dependencies {
     implementation(project(":openapi-sdk"))
-//    implementation("com.github.njf-dev:njf-openapi-sdk:main-SNAPSHOT")
+//    implementation("com.njf2016:njf-openapi-sdk:main-SNAPSHOT")
+//    implementation("com.njf2016:njf-openapi-sdk:1.0.0-2")
 }
 
 buildConfig {

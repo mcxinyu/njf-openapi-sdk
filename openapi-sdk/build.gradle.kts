@@ -24,7 +24,7 @@ publishing {
         create<MavenPublication>("maven") {
             from(components["kotlin"])
 
-            groupId = "com.njf2016"
+            groupId = "com.njf2016.open"
             artifactId = "openapi-sdk"
         }
     }

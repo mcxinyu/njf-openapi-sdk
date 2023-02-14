@@ -1,26 +1,28 @@
 # njf-openapi-sdk
 
-[![](https://jitpack.io/v/njf-dev/njf-openapi-sdk.svg)](https://jitpack.io/#njf-dev/njf-openapi-sdk)
+[![](https://jitpack.io/v/com.njf2016/njf-openapi-sdk.svg)](https://jitpack.io/#com.njf2016/njf-openapi-sdk)
 
 农卷风开放平台 openapi-sdk
 
 # 使用
 
-添加 Jitpack 仓库
+发布在 Jitpack，支持 gradle、maven 等，请通过 [Jitpack openapi-sdk](https://jitpack.io/#njf-dev/njf-openapi-sdk) 引入。
+
+- 添加 Jitpack 仓库
 
 ```groovy
-dependencies {
-    implementation 'com.github.njf-dev:njf-openapi-sdk:<VERSION>'
+allprojects {
+    repositories {
+        maven { url 'https://jitpack.io' }
+    }
 }
 ```
 
 - 正式版
 
-发布在 Jitpack，支持 gradle、maven 等，请通过 [Jitpack openapi-sdk](https://jitpack.io/#njf-dev/njf-openapi-sdk) 引入。
-
 ```groovy
 dependencies {
-    implementation 'com.github.njf-dev:njf-openapi-sdk:<VERSION>'
+    implementation 'com.njf2016:njf-openapi-sdk:<VERSION>'
 }
 ```
 
@@ -30,6 +32,6 @@ dependencies {
 
 ```groovy
 dependencies {
-    implementation 'com.github.njf-dev:njf-openapi-sdk:main-SNAPSHOT'
+    implementation 'com.njf2016:njf-openapi-sdk:main-SNAPSHOT'
 }
 ```
