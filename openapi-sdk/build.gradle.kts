@@ -20,6 +20,14 @@ publishing {
             url = uri(layout.buildDirectory.dir("repo/"))
         }
     }
+    publications {
+        create<MavenPublication>("maven") {
+            from(components["kotlin"])
+
+            groupId = "com.njf2016"
+            artifactId = "openapi-sdk"
+        }
+    }
 }
 
 dependencies {

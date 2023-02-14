@@ -13,9 +13,10 @@ version = "unspecified"
 
 dependencies {
     implementation(project(":openapi-sdk"))
+//    implementation("com.github.njf-dev:njf-openapi-sdk:main-SNAPSHOT")
 }
 
 buildConfig {
-    buildConfigField("String", "appId", appId.isNullOr { localProperties.getProperty("appId") })
-    buildConfigField("String", "secret", secret.isNullOr { localProperties.getProperty("secret") })
+    buildConfigField("String", "appId", appId.isNullOr { "${localProperties["appId"]}" })
+    buildConfigField("String", "secret", secret.isNullOr { "${localProperties["secret"]}" })
 }
