@@ -6,7 +6,7 @@
 
 # 使用
 
-发布在 Jitpack，支持 gradle、maven 等，请通过 [Jitpack openapi-sdk](https://jitpack.io/#njf-dev/njf-openapi-sdk) 引入。
+发布在 Jitpack，支持 gradle、maven 等，请通过 [Jitpack openapi-sdk](https://jitpack.io/#com.njf2016/njf-openapi-sdk) 引入。
 
 - 添加 Jitpack 仓库
 
