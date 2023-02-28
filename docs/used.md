@@ -109,5 +109,5 @@
 
 !!! tip
    
-      其他可参考 [接口文档](/api/)
+      其他可参考 [接口文档](https://docs.njf2016.com/njf-openapi-sdk/api/)
 
