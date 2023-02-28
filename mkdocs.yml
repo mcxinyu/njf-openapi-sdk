@@ -41,8 +41,8 @@ theme:
 
 plugins:
   - search
-  - mike:
-      version_selector: true
+#  - mike:
+#      version_selector: true
   - git-revision-date-localized:
       type: iso_date
 
