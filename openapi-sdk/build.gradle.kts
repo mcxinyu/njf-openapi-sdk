@@ -4,6 +4,7 @@ val logback_version: String by project
 plugins {
     kotlin("jvm") version Versions.kotlin_version
     `maven-publish`
+    id("org.jetbrains.dokka") version "1.7.20"
 }
 
 group = "com.njf2016"
@@ -28,6 +29,10 @@ publishing {
             artifactId = "openapi-sdk"
         }
     }
+}
+
+tasks.dokkaGfm {
+    outputDirectory.set(rootDir.resolve("docs/api"))
 }
 
 dependencies {

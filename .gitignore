@@ -41,3 +41,5 @@ bin/
 
 local.properties
 */local.properties
+
+docs/api

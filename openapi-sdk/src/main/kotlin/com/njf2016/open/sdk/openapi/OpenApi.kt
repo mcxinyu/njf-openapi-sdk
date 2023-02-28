@@ -21,6 +21,11 @@ object OpenApi {
     private var _accessToken: AccessToken? = null
 
     /**
+     * 接口所属限制范围标志
+     */
+    private var `x-ratelimit-scope`: Long? = null
+
+    /**
      * 限制请求次数
      */
     private var `x-ratelimit-limit`: Long? = null
@@ -35,6 +40,12 @@ object OpenApi {
      */
     private var `x-ratelimit-reset`: Long? = null
 
+    /**
+     * 初始化 SDK，通过农卷风开放服务平台可获得 [初始化参数](https://docs.njf2016.com/njf-open-service-docs/latest/open-web/open-web-app-config/#_2)
+     *
+     * @param appId
+     * @param secret
+     */
     @JvmStatic
     fun init(appId: String, secret: String) = apply { Http.generateBasicAuth(appId, secret) }
 
@@ -51,15 +62,37 @@ object OpenApi {
             throw AccessDeniedException("请求频率超过限制")
         }
 
-        parseRatelimit(it.headers)
+        getRateLimit(it.headers)
     }
 
-    private fun parseRatelimit(headers: Headers) = runCatching {
-        `x-ratelimit-limit` = headers["x-ratelimit-limit"]?.toLong()
-        `x-ratelimit-remaining` = headers["x-ratelimit-remaining"]?.toLong()
-        `x-ratelimit-reset` = headers["x-ratelimit-reset"]?.toLong()
-    }
+    /**
+     * 解析速率限制参数
+     *
+     * @param headers
+     */
+    @JvmOverloads
+    fun getRateLimit(headers: Headers? = null): Map<String, Long?>? = runCatching {
+        headers?.let {
+            `x-ratelimit-scope` = it["X-RateLimit-Scope"]?.toLong()
+            `x-ratelimit-limit` = it["X-RateLimit-Limit"]?.toLong()
+            `x-ratelimit-remaining` = it["X-RateLimit-Remaining"]?.toLong()
+            `x-ratelimit-reset` = it["X-RateLimit-Reset"]?.toLong()
+        }
+        mapOf(
+            "scope" to `x-ratelimit-scope`,
+            "limit" to `x-ratelimit-limit`,
+            "remaining" to `x-ratelimit-remaining`,
+            "reset" to `x-ratelimit-reset`
+        )
+    }.getOrNull()
 
+    /**
+     * 获取 accessToken
+     *
+     * @see [accessToken]
+     * @param refresh
+     * @return
+     */
     @JvmStatic
     @JvmOverloads
     fun getAccessToken(refresh: Boolean = false): String? {
@@ -85,6 +118,14 @@ object OpenApi {
         return _accessToken?.accessToken
     }
 
+    /**
+     * 读取网关列表
+     *
+     * @see [intelliConcentrators]
+     * @param page
+     * @param num
+     * @return
+     */
     @JvmStatic
     @JvmOverloads
     fun getIntelliConcentrators(page: Int = 1, num: Int = 16): List<Concentrator>? {
@@ -98,6 +139,13 @@ object OpenApi {
         return list
     }
 
+    /**
+     * 读取传感器列表
+     *
+     * @see [intelliDevices]
+     * @param concentrator
+     * @return
+     */
     @JvmStatic
     fun getIntelliDevices(concentrator: String): List<Device>? {
         var list: List<Device>? = null
@@ -110,6 +158,19 @@ object OpenApi {
         return list
     }
 
+    /**
+     * 读取传感器数据
+     *
+     * @see [intelliDeviceData]
+     * @param deviceId
+     * @param latest
+     * @param time
+     * @param startTime
+     * @param endTime
+     * @param page
+     * @param num
+     * @return
+     */
     @JvmStatic
     @JvmOverloads
     fun getIntelliDeviceData(

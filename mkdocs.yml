@@ -1,0 +1,73 @@
+# https://squidfunk.github.io/mkdocs-material/getting-started/
+site_name: 农卷风开放服务 OpenApi-SDK
+copyright: 版权所有 &copy; 2023 <a href="https://www.njf2016.com" target="_blank"> 农卷风 </a> 保留所有权利 </br><a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030602006662" target="_blank"> 粤公网安备 44030602006662 号 </a>&ensp;&ensp;<a href="https://beian.miit.gov.cn/" target="_blank"> 粤 ICP 备 2022021730 号 </a>
+
+theme:
+  name: material
+#  custom_dir: docs/overrides
+  language: zh
+  palette:
+    - media: "(prefers-color-scheme)"
+      primary: black
+      toggle:
+        icon: material/brightness-auto
+        name: 系统主题
+    - media: "(prefers-color-scheme: light)"
+      primary: black
+      scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: 浅色主题
+    - media: "(prefers-color-scheme: dark)"
+      primary: black
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: 深色主题
+  logo: assets/logo.png
+  favicon: assets/favicon.png
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.top
+    - navigation.expand
+    - navigation.indexes
+    - toc.follow
+    - content.code.copy
+    - content.tabs.link
+    - announce.dismiss
+
+plugins:
+  - search
+  - mike:
+      version_selector: true
+  - git-revision-date-localized:
+      type: iso_date
+
+extra:
+  generator: false
+#  version:
+#    provider: mike
+#  social:
+#    - icon: fontawesome/brands/github
+#      link: https://github.com/njf-dev/
+
+extra_css:
+  - stylesheets/extra.css
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+
+nav:
+  - 入门:
+    - index.md
+    - 使用帮助: used.md
+  - 参考文档: api
