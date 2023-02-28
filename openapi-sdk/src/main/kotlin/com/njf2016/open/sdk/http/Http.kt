@@ -35,6 +35,7 @@ internal object Http {
                 credentials {
                     _basicAuthCredentials
                 }
+                // 在初始请求中启用发送凭据，而无需等待带有标头的（未经授权的）响应。
                 sendWithoutRequest {
                     it.url.toString() == "$host/api/auth/token"
                 }
@@ -49,6 +50,7 @@ internal object Http {
                     val accessToken = OpenApi.getAccessToken()!!
                     BearerTokens(accessToken, "")
                 }
+                // 在初始请求中启用发送凭据，而无需等待带有标头的（未经授权的）响应。
                 sendWithoutRequest {
                     it.url.host == "open.njf2016.com" && it.url.toString() != "$host/api/auth/token"
                 }

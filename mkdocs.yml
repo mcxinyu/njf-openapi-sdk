@@ -67,7 +67,7 @@ markdown_extensions:
       alternate_style: true
 
 nav:
-  - 入门:
+  - 开始:
     - index.md
-    - 使用帮助: used.md
+    - 使用: used.md
   - 参考文档: api
