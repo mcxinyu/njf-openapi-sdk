@@ -6,6 +6,7 @@ theme:
   name: material
 #  custom_dir: docs/overrides
   language: zh
+  font: false
   palette:
     - media: "(prefers-color-scheme)"
       primary: black
